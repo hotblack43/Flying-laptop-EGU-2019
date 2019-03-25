@@ -42,7 +42,8 @@
 \graphicspath{{fig/}} % Location of the graphics files
 
 \usecaptiontemplate{\small\structure{\insertcaptionname~\insertcaptionnumber: }\insertcaption} % A fix for figure numbering
-
+\usepackage[binary-units=true]{siunitx}
+%\usepackage{formula}
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION 
 %----------------------------------------------------------------------------------------
@@ -91,7 +92,7 @@ Technology, Melbourne, Australia, (4) DTU Space, Danish Technical University, Ly
 \item We study scattered-light properties of two telescopic systems, one on Earth and one in space, in order to determine the best systems approach for earthshine observing systems.
 \item We explore the scattered-light properties of the University of Stuttgart "Flying Laptop" satellite.
 \item We compare the properties of the scattered-light halo around the lunar disk as seen from the ground and from space.
-\item We suggest improvements to earthshine observing techniques in view of our findings.
+\item We suggest improvements to earthshine observing techniques.
 \end{itemize}
 \end{block}
 
@@ -120,7 +121,7 @@ Earthshine is weak and has to be measured very close to a bright source of light
 %----------------------------------------------------------------------------------------
 \begin{block}{The MICS camera}
 \begin{figure}
-\includegraphics[scale=0.56]{fig/mics_schnittansicht.png}
+\includegraphics[scale=0.76]{fig/MICS_open_eng.png}
 \caption{One of the MICS cameras. There is one such system for each of the colour filters.}~\label{fig:MICS}
 \end{figure}
 \end{block}
@@ -140,45 +141,38 @@ Earthshine is weak and has to be measured very close to a bright source of light
 %	MATERIALS
 %----------------------------------------------------------------------------------------
 
-\begin{block}{The satellite "The Flying Laptop", and its MICS camera}
+\begin{block}{The satellite "Flying Laptop", and its MICS camera}
 \begin{figure}
-\includegraphics[scale=6]{fig/flp_inside.png}
-\caption{The University of Stuttgart Flying Laptop satellite. The three optical instruments we use in this poster are seen at the upper left of the 60x75x85 cm body of the satellite.}~\label{fig:flp}
+\includegraphics[scale=0.3]{fig/FLP_1_weiss.jpg}
+\caption{The University of Stuttgart Flying Laptop satellite. The three optical instruments we use in this poster are seen at the upper left of the \SI[product-units = power]{60 x 70 x 87}{\centi\metre} body of the satellite.}~\label{fig:flp}
 \end{figure}
-
-\begin{figure}
-    \centering
-    \vspace{-1cm}
-    \includegraphics[viewport=10 47 750 310,clip]{fig/Moon2panels.png}
-    \caption{MICS image of the Moon taken from orbit on February 18 2019, in the NIR filter band. The left panel shows the linear image while the right panel shows the histogram equalised image to bring  out the faint details. The features seen apart from the Moon itself are ghost images of the Moon caused by reflection from the CCD surface onto the back of the optical elements of the camera, and re-reflected several times. The vertical streak of light is due to illumination of the image sensor during image readout and occurs when the exposure time (here, 8 msec) is short compared to the readout time. The downward-pointing streak is not understood yet.}
-    \label{fig:my_label}
-\end{figure}
-
-On the satellite there are three cameras obtaining images in each their own filter. Each camera has its own CCD detector, and each camera has its own main multi-element objective and interior baffling.
-The Multispectral Imaging Camera System (MICS) camera and its detector have the following specifications:
+The Flying Laptop (FLP) is a satellite developed by graduate and undergraduate students at the Institute of Space Systems of the University of Stuttgart with support by space industry and research institutions. The satellite weights about 110 kg and has a size of \SI[product-units = power]{60 x 70 x 87}{\centi\metre}. The main objective of its mission is earth observation, technology demonstration and education. Therefore, different payloads are used: The main one is the Multispectral Imaging Camera System (MICS), which consists of three identical cameras with different filters (see Image \ref{fig:MICS} and \ref{fig:filterfig}). Other payloads include a wide angle camera (PamCam) and an automatic identification system (AIS) receiver for observation of ships. The satellite was launched in July 2017 and is now used for earth observation and for student education. All operations are performed from the control room at the Institute of Space Systems and have been highly automated. The satellite bus has proven to be reliable and performs well. Besides the presented moon observation, the satellite also images the earth and observes ships using the AIS system. \\
+Each camera in the MICS system has its own CCD detector, and each camera has its own main multi-element objective and baffle (located inside the satellite). The MICS has the following specifications:
 \begin{itemize}
-    \item Objective is a 4 cm OD x-element
-    \subitem coated?
-    \subitem focal length x cm, f-numnber thus 4
+    \item Objective is a 5-element lens
+    \begin{itemize}
+        \item Aperture diameter ~\SI{90}{\milli\meter}
+        \item focal length \SI{360}{\milli\metre}, f-number  4
+    \end{itemize}
     \item Image sensor is a Kodak KAI-1003M CCD interline sensor 
-    \subitem 12-bit dynamic range
-    \subitem Rolling shutter? To be confirmed!
-    \subitem Bias-frames have a regular pattern. See Figure~\ref{fig:ripplefig}
-    \item There are three broad-band interference filters for 530-580 nm (Green), 620-670 nm (Red), and 820-870 nm (NIR).(See Figure~\ref{fig:ripplefig}).
+    \begin{itemize}
+        \item 12-bit dynamic range
+        \item Bias-frames have a regular pattern. See Figure~\ref{fig:filterfig}
+    \end{itemize}
+    \item There are three broad-band interference filters for \SIrange{530}{580}{\nano\meter} (Green), \SIrange{620}{670}{\nano\meter} (Red), and \SIrange{820}{870}{\nano\meter} (NIR).(See Figure~\ref{fig:filterfig}).
 \end{itemize}
 
 \begin{figure}
     \centering
-    \includegraphics[scale=0.41]{fig/mics_filter_characteristics.png}
-    \includegraphics[scale=0.41]{fig/ripplefig.png}
-    \caption{(Left panel): Transmission properties of the Green, Red and Near-Infrared (NIR) filters used in the three MICS cameras. Earth's atmospheric transmission spectrum is also shown, highlighting the absorption bands from CO$_2$ and H$_2$O.(Right panel): Structure of the dark frame in Red, Green and NIR (clockwise from upper left). Mean values near 50 counts, standard deviation about x counts. from 11 to 13 images in each of the three colour-bands have been aligned and averaged. Image scale and location in the image is the same for all three subpanels. }
-    ~\label{fig:filterfig}
+    \vspace{-1cm}
+    \includegraphics{fig/Moon2panels.png}
+    %\includegraphics[viewport=10 47 750 310,clip]{fig/Moon2panels.png}
+    \caption{MICS image of the Moon taken from orbit on February 18 2019, in the NIR filter band. The left panel shows the linear image while the right panel shows the histogram equalised image to bring  out the faint details. The features seen apart from the Moon itself are ghost images of the Moon caused by reflection from the CCD surface onto the back of the optical elements of the camera, and re-reflected several times. The vertical streak of light is due to illumination of the image sensor during image readout and occurs when the exposure time (here, \SI{8}{\milli\second}) is short compared to the readout time. The downward-pointing streak is puzzling.}
+    \label{fig:my_label}
 \end{figure}
 
+
 \end{block}
-
-
-
 
 \end{column} % End of the second column
 \begin{column}{.01\textwidth}\end{column} % Empty spacer column
@@ -187,8 +181,19 @@ The Multispectral Imaging Camera System (MICS) camera and its detector have the 
 %---------------------------------
 % PART 2
 %---------------------------------
+\begin{block}
 
 
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.41]{fig/mics_filter_characteristics.png}
+    \hspace{0.5cm}
+    \includegraphics[scale=0.41]{fig/ripplefig.png}
+    \caption{(Left panel): Transmission properties of the Green, Red and Near-Infrared (NIR) filters used in the three MICS cameras. Earth's atmospheric transmission spectrum is also shown, highlighting the absorption bands from CO$_2$ and H$_2$O.(Right panel): Structure of the dark frame in Red, Green and NIR (clockwise from upper left). Mean values near 50 counts, standard deviation about x counts. From 11 to 13 images in each of the three colour-bands have been aligned and averaged. Image scale and location in the image is the same for all three subpanels. }
+    ~\label{fig:filterfig}
+\end{figure}
+
+\end{block}
 
 \begin{block}{Expectations for point-spread function profiles.}
 Diffraction in optics, and most optical defects (micro-scratches in lens surfaces, for instance) produce point-spread functions (PSFs) with power-law wings. Observing any object with such systems produces images with power-law profiles at intensity edges. In addition to this, scattering in the atmosphere also results in additional power-law behaviour in the resulting PSF. 
@@ -201,7 +206,7 @@ Viewing objects with different geometries and extents with such a diffraction-PS
 
 For a range of geometries we find:
 \begin{itemize}
-    \item A point-source yields a $1/r^3$ profile for the intensity falloff with distance, $r$
+    \item A point-source yields a $1/r^3$ profile for the intensity falloff with distance
     \item A line-source yields a $1/r^2$ profile with perpendicular distance from the line, $r$, and
     \item A semi-infinite half-plane yields a $1/r$ profile, while
     \item a uniform disk yields a variable dependence with $r$, similar to $1/r$ close to the edge and asymptotically approaching $1/r^3$ as the distance to the edge grows.
@@ -220,16 +225,45 @@ Any additional structure around an object, caused by light-scattering before the
 
 Figure~\ref{fig:3panelfig} shows the profile of the halo of the Full Moon images taken with the MICS from the night of February 16-17th and 18th 2019. Figure~\ref{fig:MLOresult} contains realistic estimates of the errors we expect in setting the level of the electronics-induced background in the images, and enables us to understand whether the profile significantly indicates a profile like a straight line (as expected from log-log plots of $1/r^{\alpha}$-type power laws) or not, in Figure~\ref{fig:3panelfig}.
 
+
+%\vspace{-1cm}
+%\end{block}
+
+%\begin{block}
+%\begin{figure}
+%\centering 
+%\includegraphics[scale=1.08,viewport=2 261 232 496,clip]{fig/slopes_compared_2019-02-16_16-24.pdf}
+%\includegraphics[scale=1.08,viewport=2 261 232 496,clip]{fig/slopes_compared_2019-02-17_16-33.pdf}
+%\includegraphics[scale=1.08,viewport=2 261 232 496,clip]{fig/slopes_compared_2019-02-18_16-46.pdf}
+%\includegraphics[scale=1.08,clip]{fig/slopes_compared_2019-02-16_16-24.pdf}
+%\includegraphics[scale=1.08,clip]{fig/slopes_compared_2019-02-17_16-33.pdf}
+%\includegraphics[scale=1.08,clip]{fig/slopes_compared_2019-02-18_16-46.pdf}
+%\caption{Scattered-light halo profiles. The radial profile of the scattered light halo seen around the Full Moon disk on the nights of February 16th to 18th of 2019 were measured, in three colour bands, and are here plotted as function of the distance from the lunar disk edge. Black is the Green-filter profile, red is for a red filter, and purple is for a near-infrared filter. The intensities have been scaled to coincide at $r=10$.}~\label{fig:3panelfig}
+%\end{figure}
+\end{block}
+
+
+
+\end{column} % End of the third column
+
+\begin{column}{.01\textwidth}\end{column} % Empty spacer column
+%----------------------------------------------------------------------------------------
+\begin{column}{.23\textwidth}
+%----------------------------------------------------------------------------------------
+%	RESULTS
+%---------------------------------------------------------------------------------------
+\begin{block}{}
 \begin{figure}
-\centering 
+   \centering 
 \includegraphics[scale=1.08,viewport=2 261 232 496,clip]{fig/slopes_compared_2019-02-16_16-24.pdf}
 \includegraphics[scale=1.08,viewport=2 261 232 496,clip]{fig/slopes_compared_2019-02-17_16-33.pdf}
 \includegraphics[scale=1.08,viewport=2 261 232 496,clip]{fig/slopes_compared_2019-02-18_16-46.pdf}
+%\includegraphics[scale=1.08,clip]{fig/slopes_compared_2019-02-16_16-24.pdf}
+%\includegraphics[scale=1.08,clip]{fig/slopes_compared_2019-02-17_16-33.pdf}
+%\includegraphics[scale=1.08,clip]{fig/slopes_compared_2019-02-18_16-46.pdf}
 \caption{Scattered-light halo profiles. The radial profile of the scattered light halo seen around the Full Moon disk on the nights of February 16th to 18th of 2019 were measured, in three colour bands, and are here plotted as function of the distance from the lunar disk edge. Black is the Green-filter profile, red is for a red filter, and purple is for a near-infrared filter. The intensities have been scaled to coincide at $r=10$.}~\label{fig:3panelfig}
 \end{figure}
-\vspace{-1cm}
 \end{block}
-
 
 \begin{block}{MICS Results for three colours}
 \begin{table}[]
@@ -244,16 +278,6 @@ Figure~\ref{fig:3panelfig} shows the profile of the halo of the Full Moon images
     \label{tab:my_label}
 \end{table}
 \end{block}
-
-
-\end{column} % End of the third column
-
-\begin{column}{.01\textwidth}\end{column} % Empty spacer column
-%----------------------------------------------------------------------------------------
-\begin{column}{.23\textwidth}
-%----------------------------------------------------------------------------------------
-%	RESULTS
-%---------------------------------------------------------------------------------------
 \begin{block}{Halo profile from a telescope on Earth compared to one from space}
 \begin{figure}
 \centering 
@@ -279,14 +303,14 @@ For a space-based imaging instrument to provide data comparable or superior to t
 Ghosting can be avoided by tilting the CCD axis,
     but small f-number systems do not allow tilted CCDs because of short focus depth.
 
-We therefore recommend the following:
-\begin{itemize}
+%We therefore recommend the following:
+%\begin{itemize}
     %\item A 16-bit image sensor is needed
     %\item Very low bias level --- a.k.a. readout noise, or RON, is required
     %\item A physical shutter --- or a "Global Shutter" (defined in electronics) --- preventing illumination of the sensor during readout, is required for short exposure times, such as these of the bright Moon.
     %\item Imaging without a coronograph optical design does not reduce stray light or diffraction from the aperture enough. A Lyot stop in the collimated part of the beam prior to third lens and image formation on the sensor is recommended.
-   \item A space-based earthshine instrument should have a relatively large f-number so that ghost elimination becomes possible by tilting the CCD axis away from the optical axis.
-\end{itemize}
+%   \item A space-based earthshine instrument should have a relatively large f-number so that ghost elimination becomes possible by tilting the CCD axis away from the optical axis.
+%\end{itemize}
 
 
 
